@@ -1,0 +1,46 @@
+#include <stdio.h>
+struct POL{
+    int coeff,expo;
+}p1[5],p2[5],sum[5];
+int main(){
+    int n1,n2,n3,i,j,k;
+    printf("Enter the no of terms for 1st polynomial:");
+    scanf("%d",&n1);
+    printf("Enter coefficients and dergee respectively:");
+    for(i=0;i<n1;i++){
+        scanf("%d%d",&p1[i].coeff,&p1[i].expo);
+    }
+    printf("Enter the no of terms for 2nd polynomial:");
+    scanf("%d",&n2);
+    printf("Enter coefficients and dergee respectively:");
+    for(j=0;j<n2;j++){
+        scanf("%d%d",&p2[j].coeff,&p2[j].expo);
+    }
+    n3=n2;
+    for(i=0,j=0,k=0;i<n1,j<n2,k<n3;i++,j++,k++){
+        if(p1[i].expo==p2[j].expo){
+            sum[k].coeff=p1[i].coeff+p2[j].coeff;
+            sum[k].expo=p1[i].expo;
+        }
+        else if(p1[i].expo>p2[j].expo){
+            sum[k].coeff=p1[i].coeff;
+            sum[k].expo=p1[i].expo;
+        }
+        else if(p2[j].expo>p1[i].expo){
+            sum[k].coeff=p2[j].coeff;
+            sum[k].expo=p2[j].expo;
+        }
+    }
+    printf("sum:");
+    for(i=0,j=0,k=0;i<n1,j<n2,k<n3;i++,j++,k++){
+        if(sum[k].expo!=0){
+            printf("%d*^%d+",sum[k].coeff,sum[k].expo);
+        
+        }
+        else
+        {
+            printf("%d",sum[k].coeff);
+        }
+    }
+    return 0;
+}
